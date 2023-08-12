@@ -16,7 +16,7 @@ Login as a user with the `SUPERUSER` role. You can do this by running the follow
 psql -U postgres
 ```
 
-Create a new database called `gamestore`:
+Create a new database called "gamestore":
 
 ```sql
 CREATE DATABASE gamestore;
