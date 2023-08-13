@@ -1,12 +1,14 @@
 const client = require('./client');
 const util = require('util');
 
-const REPLACE_ME = 'HELP REPLACE ME!!!!';
+const query = `
+    SELECT * FROM videoGames
+    `;
 
 // GET - /api/video-games - get all video games
 async function getAllVideoGames() {
     try {
-        const { rows: videoGames } = await client.query(REPLACE_ME);
+        const { rows: videoGames } = await client.query(query);
         return videoGames;
     } catch (error) {
         throw new Error("Make sure you have replaced the REPLACE_ME placeholder.")
@@ -27,6 +29,10 @@ async function getVideoGameById(id) {
 }
 
 // POST - /api/video-games - create a new video game
+  //try catch
+  //learn how to create, add to a database
+  //return something 
+  //catch error
 async function createVideoGame(body) {
     // LOGIC GOES HERE
 }
