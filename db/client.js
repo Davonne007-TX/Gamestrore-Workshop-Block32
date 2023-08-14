@@ -1,4 +1,4 @@
-const { Client } = require('pg');
+const { Client } = require('pg');  //import client class from pg node library
 
 const connectionString = process.env.DATABASE_URL || 'https://localhost:5432/gamestore';
 

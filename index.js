@@ -4,14 +4,14 @@ const PORT = 8080;
 
 // init morgan
 const morgan = require('morgan');
-app.use(morgan('dev'));
+app.use(morgan('dev'));  //also a middleware, also applied to every route 
 
 // init body-parser
 const bodyParser = require('body-parser');
-app.use(bodyParser.json());
+app.use(bodyParser.json()); //this will run every response, middleware, every app.use
 
 // init cors
-const cors = require('cors');
+const cors = require('cors');  //being used on every route, middleware 
 app.use(cors());
 
 // init db client
