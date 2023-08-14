@@ -28,7 +28,7 @@ async function getVideoGameById(id) {
     }
 }
 
-// POST - /api/video-games - create a new video game
+// POST - /api/video-games - create a new video game    ////////need help
   //try catch
   //learn how to create, add to a database
   //return something 
@@ -87,13 +87,21 @@ async function updateVideoGame(id, fields = {}) {
 
 // DELETE - /api/video-games/:id - delete a single video game by id
 //a try catch
+//follow logic from getVideoFromId
+//learn how to delete in postgres
+// return videoGame
+//catch error
 async function deleteVideoGame(id) {
     try {
-
+        const { rows: videoGame } = await client.query( `
+            DELETE FROM videoGames
+            WHERE id = $1;
+        `, [id])
+        
+        return videoGame
     } catch (error) {
         throw(error)
     }
- 
 }
 
 module.exports = {
