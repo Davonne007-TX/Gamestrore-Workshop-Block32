@@ -53,7 +53,11 @@ router.post('/', async (req, res, next) => {
 //send that variable
 //catch error
 router.put('/:id', async (req, res, next) => {
-    // LOGIC GOES HERE 
+    try {
+
+    } catch (error) {
+        next(error)
+    }
 });
 
 // DELETE - /api/video-games/:id - delete a single video game by id
@@ -61,7 +65,11 @@ router.put('/:id', async (req, res, next) => {
 //set a variable again to await the delete video game function, set the req.params.id
 //catch error
 router.delete('/:id', async (req, res, next) => {
-    // LOGIC GOES HERE
+   try {
+
+   } catch (error) {
+    next(error)
+   }
 });
 
 
