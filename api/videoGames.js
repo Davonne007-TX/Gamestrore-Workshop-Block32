@@ -54,6 +54,8 @@ router.post('/', async (req, res, next) => {
 //catch error
 router.put('/:id', async (req, res, next) => {
     try {
+        const updateSingleGame = await updateVideoGame(req.params.id, req.body)
+        res.send(updateSingleGame)
 
     } catch (error) {
         next(error)
@@ -66,6 +68,8 @@ router.put('/:id', async (req, res, next) => {
 //catch error
 router.delete('/:id', async (req, res, next) => {
    try {
+    const deleteGame = await deleteVideoGame(req.params.id)
+    res.send(deleteGame)
 
    } catch (error) {
     next(error)
