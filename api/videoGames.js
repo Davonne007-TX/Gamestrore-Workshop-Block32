@@ -9,7 +9,7 @@ const { getAllVideoGames,
     updateVideoGame,
     deleteVideoGame } = require('../db/videoGames');
 
-// GET - /api/video-games - get all video games
+// GET - /api/video-games - get all video games   ----//this is done 
 router.get('/', async (req, res, next) => {
     try {
         const videoGames = await getAllVideoGames();
@@ -20,6 +20,8 @@ router.get('/', async (req, res, next) => {
 });
 
 // GET - /api/video-games/:id - get a single video game by id
+//replace me with the params because its an id
+//req is not highlighted, need to highlight it 
 router.get('/:id', async (req, res, next) => {
     try {
         const videoGame = await getVideoGameById(req.params.id);
@@ -35,7 +37,13 @@ router.get('/:id', async (req, res, next) => {
 //res.send that variable 
 //catch error
 router.patch('/', async (req, res, next) => {
-    // LOGIC GOES HERE 
+    try {
+        const newGame = await createVideoGame(req.body)
+        res.send(newGame)
+
+    } catch (error) {
+        next(error)
+    }
 });
 
 
