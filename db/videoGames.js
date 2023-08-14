@@ -5,7 +5,7 @@ const query = `
     SELECT * FROM videoGames
     `;
 
-// GET - /api/video-games - get all video games    --//this is done 
+// GET - /api/video-games - get all video games    
 async function getAllVideoGames() {
     try {
         const { rows: videoGames } = await client.query(query);
@@ -38,13 +38,42 @@ async function createVideoGame(body) {
         const { rows: [videoGame] } = await client.query(`
             INSERT INTO videoGames (name, description, price, isPopular, imgUrl)
             VALUES ('Cobra Kai', 'karate martial arts', 60, true, "https://i.postimg.cc/rskdPVVL/thao-lee-Xl-il-WBKJNk-unsplash.jpg")
-        
+            RETURNING *;
         `, [body])
         return videoGame;
+
    } catch (error) {
     throw error
    }
 }
+
+// async function createVideoGame(body) {
+//     const { name, description, price, inStock, isPopular, imgUrl } = body
+//    try {
+//         const { rows: [videoGame] } = await client.query(`
+//             INSERT INTO videoGames (name, description, price, inStock, isPopular, imgUrl)
+//             VALUES ($1, $2, $3, $4, $5, $6)
+//             RETURNING *
+//         `, [name, description, price, inStock, isPopular, imgUrl])
+
+//         const newGameInfo = {
+//             name: "Cobra Kai",
+//             description: "Karate martial arts",
+//             price: 60.99,
+//             inStock: true,
+//             isPopular: true,
+//             imgUrl: "https://i.postimg.cc/rskdPVVL/thao-lee-Xl-il-WBKJNk-unsplash.jpg"
+//         }
+
+//         const newVideoGame = await createVideoGame(newGameInfo);
+//         console.log("Game added:", newVideoGame)
+
+//         return videoGame;
+//    } catch (error) {
+//     throw error
+//    }
+// }
+
 
 // PUT - /api/video-games/:id - update a single video game by id
 async function updateVideoGame(id, fields = {}) {
