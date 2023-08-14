@@ -76,13 +76,24 @@ async function createVideoGame(body) {
 
 
 // PUT - /api/video-games/:id - update a single video game by id
+//a try catch
 async function updateVideoGame(id, fields = {}) {
-    // LOGIC GOES HERE
+   try {
+
+   } catch {
+     throw(error)
+   }
 }
 
 // DELETE - /api/video-games/:id - delete a single video game by id
+//a try catch
 async function deleteVideoGame(id) {
-    // LOGIC GOES HERE
+    try {
+
+    } catch (error) {
+        throw(error)
+    }
+ 
 }
 
 module.exports = {
