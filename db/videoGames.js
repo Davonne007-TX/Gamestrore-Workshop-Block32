@@ -5,7 +5,7 @@ const query = `
     SELECT * FROM videoGames
     `;
 
-// GET - /api/video-games - get all video games
+// GET - /api/video-games - get all video games    --//this is done 
 async function getAllVideoGames() {
     try {
         const { rows: videoGames } = await client.query(query);
@@ -24,7 +24,7 @@ async function getVideoGameById(id) {
         `, [id]);
         return videoGame;
     } catch (error) {
-        throw error;
+        throw error
     }
 }
 
@@ -34,7 +34,16 @@ async function getVideoGameById(id) {
   //return something 
   //catch error
 async function createVideoGame(body) {
-    // LOGIC GOES HERE
+   try {
+        const { rows: [videoGame] } = await client.query(`
+            INSERT INTO videoGames (name, description, price, isPopular, imgUrl)
+            VALUES ('Cobra Kai', 'karate martial arts', 60, true, "https://i.postimg.cc/rskdPVVL/thao-lee-Xl-il-WBKJNk-unsplash.jpg")
+        
+        `, [body])
+        return videoGame;
+   } catch (error) {
+    throw error
+   }
 }
 
 // PUT - /api/video-games/:id - update a single video game by id

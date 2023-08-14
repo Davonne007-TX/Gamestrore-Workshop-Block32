@@ -36,7 +36,7 @@ router.get('/:id', async (req, res, next) => {
 //await the function
 //res.send that variable 
 //catch error
-router.patch('/', async (req, res, next) => {
+router.post('/', async (req, res, next) => {
     try {
         const newGame = await createVideoGame(req.body)
         res.send(newGame)
@@ -48,13 +48,22 @@ router.patch('/', async (req, res, next) => {
 
 
 // PUT - /api/video-games/:id - update a single video game by id
+// a try catch 
+//set a variable and await the function, setting the req, params and id
+//send that variable
+//catch error
 router.put('/:id', async (req, res, next) => {
     // LOGIC GOES HERE 
 });
 
 // DELETE - /api/video-games/:id - delete a single video game by id
+//a try catch block
+//set a variable again to await the delete video game function, set the req.params.id
+//catch error
 router.delete('/:id', async (req, res, next) => {
     // LOGIC GOES HERE
 });
+
+
 
 module.exports = router;
