@@ -7,9 +7,9 @@ const { getAllVideoGames,
     getVideoGameById,
     createVideoGame,
     updateVideoGame,
-    deleteVideoGame } = require('../db/videoGames');
+    deleteVideoGame } = require('../db/videoGames')
 
-// GET - /api/video-games - get all video games   ----//this is done 
+// GET - /api/video-games - get all video games  
 router.get('/', async (req, res, next) => {
     try {
         const videoGames = await getAllVideoGames();
@@ -38,14 +38,12 @@ router.get('/:id', async (req, res, next) => {
 //catch error
 router.post('/', async (req, res, next) => {
     try {
-        const newGame = await createVideoGame(req.body)
+        const newGame = await createVideoGame(req.params.body)
         res.send(newGame)
-
     } catch (error) {
         next(error)
     }
-});
-
+})
 
 // PUT - /api/video-games/:id - update a single video game by id
 // a try catch 
