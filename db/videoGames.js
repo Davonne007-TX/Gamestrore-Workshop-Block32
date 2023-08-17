@@ -46,6 +46,10 @@ async function createVideoGame(body) {
 
 // PUT - /api/video-games/:id - update a single video game by id
 //a try catch
+//look at update boardGame - watch lecture
+//look up about how to update in SQL
+//return videoGame
+//catch error
 async function updateVideoGame(id, fields = {}) {
     const setString = Object.keys(fields).map((key, index) => `"${key}"=$${index + 1}`).join(', ');
     if (setString.length === 0) {
@@ -73,14 +77,14 @@ async function updateVideoGame(id, fields = {}) {
 //follow logic from getVideoFromId
 //learn how to delete in postgres
 // return videoGame
-//catch error
+//catch error, throw error
 async function deleteVideoGame(id) {
     try {
         const { rows: [videoGame] } = await client.query( `
             DELETE FROM videoGames
             WHERE id = $1;
         `, [id])
-        
+
         return videoGame
     } catch (error) {
         throw(error)
@@ -94,3 +98,5 @@ module.exports = {
     updateVideoGame,
     deleteVideoGame
 }
+
+
