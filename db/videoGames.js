@@ -1,14 +1,10 @@
 const client = require('./client');
 const util = require('util');
 
-const query = `
-    SELECT * FROM videoGames
-    `;
-
 // GET - /api/video-games - get all video games    
 async function getAllVideoGames() {
     try {
-        const { rows } = await client.query(query);
+        const { rows } = await client.query('SELECT * FROM videoGames');
         return rows;
     } catch (error) {
         throw new Error("Make sure you have replaced the REPLACE_ME placeholder.")
@@ -31,21 +27,22 @@ async function getVideoGameById(id) {
 // POST - /api/video-games - create a new video game    ////////need help
   //try catch
   //learn how to create, add to a database
-  //return something 
+  //return something, return the videoGame
+  //catch error
 async function createVideoGame(body) {
     const {name, description, price, inStock, isPopular, imgUrl } = body;
     try {
-        const { rows: [videoGames]} = await client.query(`
-            INSERT INTO videoGames(name, description, price, "inStock", "isPopular", "imgUrl") 
+        const { rows: [videoGame] } = await client.query(`
+            INSERT INTO videoGames (name, description, price, "inStock", "isPopular", "imgUrl")
             VALUES($1, $2, $3, $4, $5, $6)
-            SELECT * FROM videoGames;
+            RETURNING * 
         `, [name, description, price, inStock, isPopular, imgUrl])
+        return videoGame
         
     } catch (error) {
         throw error
     }
 }
-
 
 // PUT - /api/video-games/:id - update a single video game by id
 //a try catch

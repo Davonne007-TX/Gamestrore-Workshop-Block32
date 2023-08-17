@@ -25,9 +25,13 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
     try {
         const videoGame = await getVideoGameById(req.params.id);
+
+        if (!videoGame) {
+            res.status(404).send("There is no game with that id, try again")
+        }
         res.send(videoGame);
     } catch (error) {
-        next(error);
+        next(error)
     }
 });
 
@@ -38,8 +42,9 @@ router.get('/:id', async (req, res, next) => {
 //catch error
 router.post('/', async (req, res, next) => {
     try {
-        const newGame = await createVideoGame(req.params.body)
-        res.send(newGame)
+        const newGame = await createVideoGame(req.body)
+        const ogGame = await getAllVideoGames(newGame.id)
+        res.send(ogGame)
     } catch (error) {
         next(error)
     }
