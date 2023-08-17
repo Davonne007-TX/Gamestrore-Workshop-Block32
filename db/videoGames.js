@@ -47,12 +47,26 @@ async function createVideoGame(body) {
 // PUT - /api/video-games/:id - update a single video game by id
 //a try catch
 async function updateVideoGame(id, fields = {}) {
-   try {
+    const setString = Object.keys(fields).map((key, index) => `"${key}"=$${index + 1}`).join(', ');
+    if (setString.length === 0) {
+        return;
+    }
+    try {
+        const query = `
+            UPDATE videoGames
+            SET ${setString}
+            WHERE id = $${Object.keys(fields).length + 1}
+            RETURNING *;
+        `;
+        const values = [...Object.values(fields), id];
 
-   } catch {
-     throw(error)
-   }
+        const { rows: [videoGame] } = await client.query(query, values);
+        return videoGame;
+    } catch (error) {
+        throw error;
+    }
 }
+
 
 // DELETE - /api/video-games/:id - delete a single video game by id
 //a try catch

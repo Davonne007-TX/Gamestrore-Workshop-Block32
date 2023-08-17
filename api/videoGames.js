@@ -43,8 +43,7 @@ router.get('/:id', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
     try {
         const newGame = await createVideoGame(req.body)
-        const ogGame = await getAllVideoGames(newGame.id)
-        res.send(ogGame)
+        res.send(newGame)
     } catch (error) {
         next(error)
     }
