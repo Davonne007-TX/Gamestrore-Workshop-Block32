@@ -1,6 +1,4 @@
-# Workshop: Backend Fundamentals - Gamestore
-
-test 
+# Workshop 32: Backend Fundamentals - Gamestore
 
 ## Overview
 
