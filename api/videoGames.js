@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-// const REPLACE_ME = 'HELP REPLACE ME!!!!';  ??? 
+// const REPLACE_ME = 'HELP REPLACE ME!!!!';  //what do we need here? Everything worked
 
 const { getAllVideoGames,
     getVideoGameById,
@@ -67,6 +67,7 @@ router.put('/:id', async (req, res, next) => {
 // DELETE - /api/video-games/:id - delete a single video game by id
 //a try catch block
 //set a variable again to await the delete video game function, set the req.params.id
+//res.send that variable
 //catch error
 router.delete('/:id', async (req, res, next) => {
    try {
