@@ -49,7 +49,7 @@ async function updateBoardGame(id, fields = {}) {
         return;
     }
     try {
-        const { rows: [boardGame] } = await client.query(`
+        const { rows: [boardGame] } = await client.query(`  
             UPDATE boardgames
             SET ${setString}
             WHERE id=${id}
@@ -59,7 +59,8 @@ async function updateBoardGame(id, fields = {}) {
     } catch (error) {
         throw error;
     }
-}
+}  //query strings to update an object
+   // 
 
 // DELETE - /api/board-games/:id - delete a single board game by id
 async function deleteBoardGame(id) {

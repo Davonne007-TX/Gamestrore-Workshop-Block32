@@ -46,7 +46,7 @@ async function createVideoGame(body) {
 
 // PUT - /api/video-games/:id - update a single video game by id
 //a try catch
-//look at update boardGame - watch lecture
+//look at update boardGame - watch lectures
 //look up about how to update in SQL
 //return videoGame
 //catch error
